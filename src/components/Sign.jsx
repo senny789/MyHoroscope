@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+
 import {
   aquarius,
   virgo,
@@ -47,7 +47,7 @@ const Sign = ({ setData, data, sign, setSelected }) => {
       <h1 id="sign-head">
         {sign} ({data.date_range})
       </h1>
-      <img src={img}></img>
+      <img src={img} alt={sign}></img>
       <h2> Todays message: {data.current_date}</h2>
       <h3> {data.description}</h3>
 

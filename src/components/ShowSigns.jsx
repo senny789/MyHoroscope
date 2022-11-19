@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 
 import {
   aquarius,
@@ -23,9 +23,9 @@ const ShowSigns = () => {
   const [sign, setSign] = useState("");
   const [selected, setSelected] = useState(false);
   const Clicked = useRef();
-  const formHandle = async () => {
+  const formHandle = useCallback(async () => {
     if (sign !== "") {
-      const data = fetch(
+      fetch(
         `https://sameer-kumar-aztro-v1.p.rapidapi.com/?sign=${sign}&day=today`,
         {
           method: "POST",
@@ -43,12 +43,12 @@ const ShowSigns = () => {
           setData(dat);
         });
     }
-  };
+  }, [sign]);
   useEffect(() => {
     if (sign !== "") {
       formHandle();
     }
-  }, [sign]);
+  }, [sign, formHandle]);
   const handleClick = async (e) => {
     setSelected(true);
     setSign(e.target.classList.value);
