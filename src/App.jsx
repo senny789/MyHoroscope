@@ -11,7 +11,6 @@ const App = () => {
     <div
       id="main"
       onClick={(e) => {
-        console.log(e.target.id);
         if (e.target.id !== "starsign") {
           setShowSigns(false);
         }

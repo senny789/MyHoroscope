@@ -126,6 +126,7 @@ const ShowSigns = () => {
             sign={sign}
             setData={setData}
             setSelected={setSelected}
+            setSign={setSign}
           />
         </div>
       )}

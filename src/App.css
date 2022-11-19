@@ -41,7 +41,7 @@
 .sign-card {
   color: aliceblue;
   width: 50%;
-
+  padding: 1em;
   background-color: rgba(240, 248, 255, 0.158);
   position: absolute;
   top: 0;
@@ -53,73 +53,12 @@
   overflow: scroll;
   border: 2px solid white;
 }
-#horoForm {
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
-  font-size: 20px;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 40%;
-}
-#horoForm > div {
-  width: 100%;
-}
-#horoForm > label > h1 {
-  margin: 0;
-}
-#horoForm > div > input[type="text"] {
-  width: 100%;
-  border-radius: 5px;
-  font-size: 0.7em;
-  padding: 1em 0.5em;
-}
-#horoForm > div > input[type="text"]:focus {
-  border: 3px solid whitesmoke;
-  outline: 0;
-  box-shadow: 0px 0px 10px rgb(143, 198, 254);
-}
-#horoForm > input[type="submit"] {
-  color: white;
-  background-color: rgba(240, 248, 255, 0.467);
-  border: none;
-  border: 2px solid white;
-  border-radius: 0.5em;
-  padding: 0.5em 1em;
-  font-size: 1em;
-  cursor: pointer;
-}
-#formlist {
-  list-style: none;
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  background-color: rgb(49, 130, 155);
-  padding: 0;
-  margin: 0;
-  border-radius: 0.5em;
-  border: 0.5px rgb(255, 255, 255) solid;
-}
 
-#formlist > li {
-  color: rgb(255, 255, 255);
-  border: 0.5px rgb(255, 255, 255) solid;
-  padding-inline: 2em;
-  cursor: pointer;
-  padding: 3px;
-}
-#formlist > li:hover {
-  background-color: rgb(109, 221, 255);
-}
 .sign-details {
   height: 100%;
   cursor: default;
   width: 100%;
+  text-align: left;
 }
 .sign-details > img {
   width: 100%;
@@ -168,4 +107,21 @@
   z-index: 0;
   height: 100%;
   width: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .showSigns {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+  .sign-card {
+    color: aliceblue;
+    width: 100%;
+    max-width: 100%;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+  }
+  .Home > h1 {
+    font-size: 5em;
+  }
 }
