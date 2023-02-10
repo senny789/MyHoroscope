@@ -1,11 +1,13 @@
-/* #main {
+#main {
   background-image: url("./images/astro.jpg");
-  height: 100vh;
+  background-size: cover;
+  min-height: 100vh;
+  height: auto;
   width: 100%;
 }
 
 .Home {
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -18,11 +20,12 @@
   margin: 0;
   text-align: center;
   font-size: 15em;
+  color: rgb(255, 255, 255);
+}
+.Home h2 {
   color: aliceblue;
 }
-.Home > h2 {
-  color: aliceblue;
-}
+
 #main-card {
   color: aliceblue;
   width: 50%;
@@ -38,20 +41,16 @@
   overflow: scroll;
   border: 2px solid white;
 }
+
 .sign-card {
   color: aliceblue;
   width: 50%;
   padding: 1em;
   background-color: rgba(240, 248, 255, 0.158);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   border-radius: 2em;
   margin: auto;
   overflow: scroll;
-  border: 2px solid white;
+  box-shadow: aliceblue 0px 1px 10px 4px;
 }
 
 .sign-details {
@@ -59,22 +58,27 @@
   cursor: default;
   width: 100%;
   text-align: left;
+  transition: 1s;
+  -webkit-text-stroke: 0.15px black;
 }
-.sign-details > img {
+.sign-details img {
   width: 100%;
   height: 40%;
 }
+
 #back {
   cursor: pointer;
 }
+
 #sign-head {
   text-transform: capitalize;
-
   text-align: center;
 }
+
 #back:hover {
   text-decoration: underline;
 }
+
 .astro {
   cursor: default;
 }
@@ -83,31 +87,39 @@
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: repeat(2, 120px);
-  grid-template-columns: 1fr 1fr;
-  transition: 1s;
+  transform-origin: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: repeat(auto-fit, 1fr);
 }
+
 .grid-item {
   height: 100%;
   width: 100%;
   position: relative;
+  font-style: italic;
   transition: 0.5s;
 }
 .grid-item:hover {
-  opacity: 0.5;
+  font-size: 1.1rem;
+  opacity: 0.8;
 }
-.grid-item > h1 {
+.grid-item h1 {
   z-index: 1;
   color: rgb(255, 255, 255);
   position: absolute;
-  top: 45%;
-  left: 45%;
+  top: 43%;
+  left: 43%;
+  font-size: 2em;
 }
-.grid-item > img {
+.grid-item img {
   z-index: 0;
   height: 100%;
   width: 100%;
 }
+.grid-item img:hover {
+  filter: blur(0.3rem);
+}
+
 @media only screen and (max-width: 768px) {
   .showSigns {
     grid-template-columns: 1fr;
@@ -115,13 +127,12 @@
   }
   .sign-card {
     color: aliceblue;
-    width: 100%;
-    max-width: 100%;
+    width: 90%;
     border: none;
-    padding: 0;
+    padding: 1rem;
     border-radius: 0;
   }
   .Home > h1 {
     font-size: 5em;
   }
-} */
+}/*# sourceMappingURL=style.css.map */

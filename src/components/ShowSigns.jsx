@@ -1,25 +1,26 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState, useRef, useCallback } from "react";
+import { Signcard } from "./Signcard";
 
-import {
-  aquarius,
-  virgo,
-  scorpio,
-  sagittarius,
-  taurus,
-  pisces,
-  aries,
-  cancer,
-  libra,
-  leo,
-  gemini,
-  capricorn,
-} from "./Images";
-import { Loading } from "./Loading";
+import { AnimatePresence, motion } from "framer-motion";
 import Sign from "./Sign";
 const ShowSigns = () => {
   const [data, setData] = useState("");
+  const signs = [
+    "aquarius",
+    "virgo",
+    "scorpio",
+    "sagittarius",
+    "taurus",
+    "pisces",
+    "aries",
+    "cancer",
+    "libra",
+    "leo",
+    "gemini",
+    "capricorn",
+  ];
   const [sign, setSign] = useState("");
   const [selected, setSelected] = useState(false);
   const Clicked = useRef();
@@ -51,85 +52,76 @@ const ShowSigns = () => {
   }, [sign, formHandle]);
   const handleClick = async (e) => {
     setSelected(true);
-    setSign(e.target.classList.value);
+
+    setSign(e.target?.classList.value.split(" ")[0]);
   };
+  const renderSigns = signs.map((sign) => {
+    return <Signcard sign={sign} />;
+  });
   return (
     <>
-      {!data ? (
-        selected === false ? (
-          <div className="showSigns" onClick={handleClick} ref={Clicked}>
-            <div className="grid-item">
-              <img src={aries} alt="aries" className="aries" />
-              <h1 className="aries">Aries</h1>
-            </div>
-            <div className="grid-item">
-              <img src={taurus} alt="taurus" className="taurus" />
-              <h1 className="taurus">Taurus</h1>
-            </div>
-            <div className="grid-item">
-              <img src={gemini} alt="gemini" className="gemini" />
-              <h1 className="gemini">Gemini</h1>
-            </div>
-            <div className="grid-item">
-              <img src={cancer} alt="cancer" className="cancer" />
-              <h1 className="cancer">Cancer</h1>
-            </div>
-            <div className="grid-item">
-              <img src={leo} alt="leo" className="leo" />
-              <h1 className="leo">Leo</h1>
-            </div>
-            <div className="grid-item">
-              <img src={virgo} alt="virgo" className="virgo" />
+      <AnimatePresence>
+        {!data ? (
+          selected === false ? (
+            <motion.div
+              key="selectSign"
+              initial={{
+                x: "-100%",
+                opacity: "0.5",
+                scale: "0.5",
+              }}
+              animate={{
+                x: "0%",
+                opacity: "1",
+                scale: "1",
+              }}
+              transition={{
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
+              exit={{
+                x: "-100%",
 
-              <h1 className="virgo">Virgo</h1>
-            </div>
-            <div className="grid-item">
-              <img src={libra} alt="libra" className="libra" />
-              <h1 className="libra">Libra</h1>
-            </div>
-            <div className="grid-item">
-              <img src={scorpio} alt="scorpio" className="scorpio" />
-
-              <h1 className="scorpio">Scorpio</h1>
-            </div>
-            <div className="grid-item">
-              <img
-                src={sagittarius}
-                alt="sagittarius"
-                className="sagittarius"
-              />
-
-              <h1 className="sagittarius">Sagittarius</h1>
-            </div>
-            <div className="grid-item">
-              <img src={capricorn} alt="capricorn" className="capricorn" />
-              <h1 className="capricorn">Capricorn</h1>
-            </div>
-            <div className="grid-item">
-              <img src={aquarius} alt="aquarius" className="aquarius" />
-              <h1 className="aquarius"> Aquarius</h1>
-            </div>
-            <div className="grid-item">
-              <img src={pisces} alt="pisces" className="pisces" />
-              <h1 className="pisces">Pisces</h1>
-            </div>
-          </div>
+                transition: {
+                  duration: 0.5,
+                  ease: "easeInOut",
+                },
+              }}
+              className="showSigns"
+              onClick={handleClick}
+              ref={Clicked}
+            >
+              {renderSigns}
+            </motion.div>
+          ) : null
         ) : (
-          <div className="sign-card">
-            <Loading />
-          </div>
-        )
-      ) : (
-        <div className="sign-card">
-          <Sign
-            data={data}
-            sign={sign}
-            setData={setData}
-            setSelected={setSelected}
-            setSign={setSign}
-          />
-        </div>
-      )}
+          <motion.div
+            key="sign"
+            initial={{
+              x: "100%",
+              opacity: "0.5",
+              scale: "0.5",
+            }}
+            animate={{
+              x: "0%",
+              opacity: "1",
+              scale: "1",
+            }}
+            transition={{
+              duration: 0.5,
+            }}
+            className="sign-card"
+          >
+            <Sign
+              data={data}
+              sign={sign}
+              setData={setData}
+              setSelected={setSelected}
+              setSign={setSign}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

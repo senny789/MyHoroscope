@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./style.css";
 import { useState } from "react";
 
 import { Home } from "./components/Home";
