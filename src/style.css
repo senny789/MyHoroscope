@@ -59,7 +59,7 @@
   width: 100%;
   text-align: left;
   transition: 1s;
-  -webkit-text-stroke: 0.15px black;
+  -webkit-text-stroke: 0.1px black;
 }
 .sign-details img {
   width: 100%;
